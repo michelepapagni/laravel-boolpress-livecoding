@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home.index');
+Route::get('/posts/category', 'HomeController@indexByCategory')->name('home.indexByCategory');
+Route::get('/posts/{slug}', 'PostController@show')->name('posts.show');
+Route::get('/categorie/{slug}/posts', 'CategoryController@getPosts')->name('categories.posts');
+
+Route::get('ajax/posts', 'PostController@getAllInAjax');
 
 Auth::routes();
 
@@ -21,5 +24,3 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->namespace('Admin')->
     Route::get('/', 'HomeController@index')->name('home.index');
     Route::resource('posts', 'PostController');
 });
-
-// Route::resource('/admin/posts', 'Admin\PostController')->name('admin.posts')->middleware('auth');
