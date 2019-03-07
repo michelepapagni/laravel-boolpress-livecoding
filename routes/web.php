@@ -16,7 +16,7 @@ Route::get('/posts/category', 'HomeController@indexByCategory')->name('home.inde
 Route::get('/posts/{slug}', 'PostController@show')->name('posts.show');
 Route::get('/categorie/{slug}/posts', 'CategoryController@getPosts')->name('categories.posts');
 
-Route::get('ajax/posts', 'PostController@getAllInAjax');
+Route::get('ajax/posts', 'PostController@getAllInAjax')->middleware('checkAjax');
 
 Auth::routes();
 

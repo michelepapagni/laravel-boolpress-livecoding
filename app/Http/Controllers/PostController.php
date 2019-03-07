@@ -15,7 +15,7 @@ class PostController extends Controller
         return view('posts.show', compact('post'));
     }
 
-    public function getAllInAjax()
+    public function getAllInAjax(Request $request)
     {
         $posts = Post::all();
 
